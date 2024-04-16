@@ -1,6 +1,7 @@
 FROM alpine:3.19.0
 
-ARG TERRAFORM_VERSION=1.7.3
+ARG BUILD_VERSION
+ENV TERRAFORM_VERSION=$BUILD_VERSION
 
 RUN apk update && \
     apk add curl jq python3 bash ca-certificates git openssl openssh unzip wget
@@ -14,4 +15,4 @@ RUN rm -rf /tmp/* && \
     rm -rf /var/tmp/*
 
 ENTRYPOINT ["/usr/bin/terraform"]
-CMD ["-help"]
+CMD ["-help"]π
